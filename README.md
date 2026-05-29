@@ -1,10 +1,10 @@
 # ETC Verify
 
-**ETC Verify** is a formal verification framework for cross-domain interface composition in complex engineered systems. It provides a Lean-based contract algebra with operators for sequential composition, shared-resource composition, refinement, and conformance checking.
+**ETC Verify™** is a formal verification framework for cross-domain interface composition in complex engineered systems. It provides a Lean-based contract algebra with operators for sequential composition, shared-resource composition, refinement, and conformance checking.
 
 This repository contains the foundational substrate: the core `Contract` type — parameterized over a modality marker — with explicit assumes, guarantees, silences, and modality-specific auxiliary data; the algebra's named operators with their soundness theorems. The substrate ships with `Untimed` as the only modality (preserving pre-v0.2.0 semantics); additional modalities are user-extensible via typeclass instances in downstream libraries without substrate modification.
 
-ETC Verify is developed by [Evolving Technologies Corporation](https://www.evolvingtech.com). The name "ETC Verify" is a trademark of Evolving Technologies Corporation.
+ETC Verify is developed by [Evolving Technologies Corporation](https://www.evolvingtech.com). The name "ETC Verify" is a trademark of Evolving Technologies Corporation (USPTO Serial No. 99842416, application pending).
 
 ## Status
 
