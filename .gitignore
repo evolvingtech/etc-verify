@@ -1,0 +1,18 @@
+# Lake build artifacts
+.lake/
+build/
+lake-packages/
+*.olean
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# macOS
+.DS_Store
+
+# Temporary
+*.tmp
+*.log
