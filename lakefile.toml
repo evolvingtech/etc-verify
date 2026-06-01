@@ -7,13 +7,15 @@ name = "ETCVerify"
 # ---------------------------------------------------------------------------
 # Mathlib activation point.
 #
-# Mathlib is not currently a dependency. Substrate v0.1 uses only Lean core
-# types and Prop, which is sufficient for the contract algebra and its
-# operators (Sequential, SharedResource, Refinement, Conformance).
+# Mathlib is not currently a dependency. The substrate through v0.2.x uses
+# only Lean core types and Prop, which is sufficient for the contract
+# algebra and its operators (Sequential, SharedResource, Refinement, Conformance).
 #
 # Trigger conditions for activation:
-#   - Timed extensions (Timed.lean) introducing real-valued time, interval
-#     reasoning, or tactic-heavy proofs (linarith, omega-style).
+#   - A downstream package instantiating a concrete real-valued/rational time
+#     type for Timed T (the v0.2.x Timed modality is abstract over T and stays
+#     Lean-core), or a future richer-than-latency timing increment (validity
+#     windows, intervals).
 #   - SharedResource instantiations needing ordered field / ordered
 #     commutative monoid structure on the resource type R.
 #   - Any module that would otherwise reinvent algebraic hierarchy already

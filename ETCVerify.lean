@@ -24,3 +24,5 @@ import ETCVerify.Operators.Sequential
 import ETCVerify.Operators.SharedResource
 import ETCVerify.Operators.Refinement
 import ETCVerify.Operators.Conformance
+import ETCVerify.Timed.Basic
+import ETCVerify.Timed.TimeIndexed

@@ -2,7 +2,7 @@
 
 **ETC Verify™** is a formal verification framework for cross-domain interface composition in complex engineered systems. It provides a Lean-based contract algebra with operators for sequential composition, shared-resource composition, refinement, and conformance checking.
 
-This repository contains the foundational substrate: the core `Contract` type — parameterized over a modality marker — with explicit assumes, guarantees, silences, and modality-specific auxiliary data; the algebra's named operators with their soundness theorems. The substrate ships with `Untimed` as the only modality (preserving pre-v0.2.0 semantics); additional modalities are user-extensible via typeclass instances in downstream libraries without substrate modification.
+This repository contains the foundational substrate: the core `Contract` type — parameterized over a modality marker — with explicit assumes, guarantees, silences, and modality-specific auxiliary data; the algebra's named operators with their soundness theorems. The substrate ships two modalities: `Untimed` (the default, with trivial auxiliary data, preserving pre-v0.2.0 semantics) and `Timed T` (carrying a `latency : T` field over a user-supplied time type `T`, composing by latency summation under sequential composition and by `max` under shared-resource composition). `Timed T` is added with no operator or soundness-theorem edit, demonstrating the Path 4b zero-substrate-edit extensibility property; it is a substrate modality, not a timing-verification product. Additional modalities are user-extensible via typeclass instances in downstream libraries without substrate modification.
 
 ETC Verify is developed by [Evolving Technologies Corporation](https://www.evolvingtech.com). 
 

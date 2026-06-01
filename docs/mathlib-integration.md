@@ -6,10 +6,10 @@ is being considered, and to be updated when activation actually happens.
 
 ## Current status
 
-Mathlib is **not currently a dependency**. Substrate v0.1 uses only Lean
-core types and `Prop`. This is sufficient for the contract algebra and
-its operators as currently scoped (`Sequential`, `SharedResource`,
-`Refinement`, `Conformance`).
+Mathlib is **not currently a dependency**. The substrate through v0.2.x
+uses only Lean core types and `Prop`. This is sufficient for the contract
+algebra and its operators as currently scoped (`Sequential`,
+`SharedResource`, `Refinement`, `Conformance`).
 
 The activation point is staged in `lakefile.toml` as a commented `require`
 block. Activating Mathlib is a deliberate decision, not a default.
@@ -18,10 +18,16 @@ block. Activating Mathlib is a deliberate decision, not a default.
 
 Add Mathlib when one or more of the following becomes true:
 
-- **Timed extensions.** `ETCVerify/Core/Timed.lean` (planned as substrate
-  development item 3) will likely need real-valued time, interval
-  reasoning, and tactics like `linarith`. These are Mathlib's natural
-  habitat; reinventing them in Lean core would be wasted effort.
+- **Timed extensions.** Superseded by the O-4 design. The v0.2.x `Timed T`
+  modality is parameterized over a user-supplied time type and is
+  implemented in pure Lean core (v0.2.1 ships `latency` only, with
+  `[Add T]`/`[Max T]` constraints). It does **not** pull Mathlib. The
+  Mathlib trigger for timing now arises (a) downstream, in a package that
+  instantiates a concrete real-valued or rational `T`/`R` and wants
+  Mathlib's real/ordered-field machinery, and (b) in a future substrate
+  increment adding richer-than-latency timing (validity windows, interval
+  overlap, monotonicity) that needs order/interval reasoning. The
+  substrate itself stays Lean-core through v0.2.x.
 - **Ordered-algebra requirements on `SharedResource`.** The current
   `[Add R]` and `[LE R]` constraints are deliberately minimal. When
   resource instantiations need ordered field structure, ordered

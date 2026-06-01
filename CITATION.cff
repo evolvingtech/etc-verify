@@ -2,8 +2,8 @@ cff-version: 1.2.0
 title: ETC Verify
 message: "Please cite this software using the metadata in this file."
 type: software
-version: 0.2.0
-date-released: 2026-05-19
+version: 0.2.1
+date-released: 2026-06-01
 authors:
   - given-names: Loren
     family-names: Abdulezer
@@ -11,13 +11,16 @@ authors:
   - name: Evolving Technologies Corporation
     country: US
 abstract: >-
-  ETC Verify is a formal verification framework for cross-domain interface
+  ETC Verify™ is a formal verification framework for cross-domain interface
   composition in complex engineered systems, with particular application to
   aerospace and lunar surface infrastructure. The framework provides a
   Lean-based contract algebra with operators for sequential composition,
   shared-resource composition, refinement, and conformance checking,
   supporting verification of architectural-level interoperability claims
   and surfacing of underdetermined assumptions (silences) as typed data.
+
+  The name "ETC Verify" is a trademark of Evolving Technologies Corporation 
+  (USPTO Serial No. 99842416, application pending).
 keywords:
   - formal verification
   - interface algebra

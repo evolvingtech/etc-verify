@@ -1,8 +1,32 @@
 # Changelog
 
-All notable changes to ETC Verify will be documented in this file.
+All notable changes to ETC Verify™ will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+The name "ETC Verify" is a trademark of Evolving Technologies Corporation (USPTO Serial No. 99842416, application pending).
+
+## [0.2.1] — 2026-06-01
+
+First non-trivial modality on the v0.2.0 Path 4b modal-parameterization layer: `Timed T`, carrying timing data, added entirely as a marker type plus typeclass instances. No operator definition or soundness theorem was edited; `Timed T` composes through the existing generic operators by typeclass synthesis alone. All six named soundness/refinement theorems remain axiom-free. Substrate stays Lean-core; no Mathlib import added.
+
+### Added
+
+- `ETCVerify.Timed` (`ETCVerify/Timed/Basic.lean`): marker type `Timed (T : Type)` for contracts carrying timing data over a user-supplied time type `T`.
+- `ETCVerify.TimedFields`: auxiliary timing-data structure carried in the `extra` field under `Timed T`; one field in v0.2.1, `latency : T`.
+- `ETCVerify.ModalData (Timed T)` instance: sets `Extra := TimedFields T`.
+- `ETCVerify.ModalSequential (Timed T)` instance: composes `extra` by latency summation (`a.latency + b.latency`); requires `[Add T]`. End-to-end latency through a series chain is the sum of per-stage latencies.
+- `ETCVerify.TimeIndexed` (`ETCVerify/Timed/TimeIndexed.lean`): time-indexed resource type `TimeIndexed (T R : Type) := T → R`, with pointwise `Add` and `LE` instances, for use as the resource parameter of shared-resource composition under `Timed`. The pointwise `LE` gives the instantaneous reading of feasibility (`∀ t, consumed t ≤ available t`).
+- `ETCVerify.ModalSharedResource (Timed T)` instance: composes `extra` latency by `max`; requires `[Max T]`.
+- Example `examples/timed-sequential/`: timed sequential composition over `Nat` milliseconds; `sequential_sound` serves `Timed` unchanged and latency sums to 8.
+- Example `examples/timed-shared-resource/`: timed shared-resource composition with a pointwise time-indexed budget; composed latency is `max 3 7 = 7`.
+
+### Changed
+
+- Root aggregator (`ETCVerify.lean`): imports the new `ETCVerify/Timed/` modules.
+- `docs/mathlib-integration.md` and `lakefile.toml`: Mathlib-trigger notes reconciled to the O-4 design. The user-supplied-time-type `Timed T` keeps the Mathlib trigger out of the substrate; it now arises downstream (a concrete real-valued or rational `T`/`R`) or at a future richer-than-latency timing increment (validity windows, interval reasoning), not in the v0.2.x Timed modality itself.
+
+The pointwise resource shape and the `max` latency-combination rule are conservative engineering-judgment defaults: the most conservative Mathlib-free instantaneous reading of a shared budget, and the parallel-composition rule that a shared rail tracks the slower branch. Both are additive resource-type/instance choices, revisable later without re-architecture if a use case warrants.
 
 ## [0.2.0] — 2026-05-19
 

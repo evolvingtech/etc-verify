@@ -15,4 +15,4 @@ lake-packages/
 
 # Temporary
 *.tmp
-*.log
+*.log*claude-code-task-spec*
