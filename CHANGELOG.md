@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 The name "ETC Verify" is a trademark of Evolving Technologies Corporation (USPTO Serial No. 99842416, application pending).
 
+## [0.2.2] — 2026-06-04
+
+Toolchain bump to Lean v4.29.0 (from v4.28.0). No source change was required: the build is clean and all six named soundness/refinement theorems were re-verified axiom-free under v4.29.0. The Lean v4.29.0 reducibility change (#12179, under which `isDefEq` no longer raises transparency when comparing implicit arguments) did not affect the substrate's `rfl`-based denotation proofs. Substrate stays Lean-core; no Mathlib import added.
+
+### Changed
+
+- `lean-toolchain`: `leanprover/lean4:v4.28.0` → `leanprover/lean4:v4.29.0`.
+
 ## [0.2.1] — 2026-06-01
 
 First non-trivial modality on the v0.2.0 Path 4b modal-parameterization layer: `Timed T`, carrying timing data, added entirely as a marker type plus typeclass instances. No operator definition or soundness theorem was edited; `Timed T` composes through the existing generic operators by typeclass synthesis alone. All six named soundness/refinement theorems remain axiom-free. Substrate stays Lean-core; no Mathlib import added.

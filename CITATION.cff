@@ -2,8 +2,8 @@ cff-version: 1.2.0
 title: ETC Verify
 message: "Please cite this software using the metadata in this file."
 type: software
-version: 0.2.1
-date-released: 2026-06-01
+version: 0.2.2
+date-released: 2026-06-04
 authors:
   - given-names: Loren
     family-names: Abdulezer

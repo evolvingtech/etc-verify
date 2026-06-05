@@ -106,20 +106,6 @@ If Mathlib is not yet active, only `lean-toolchain` changes; the
 commented `rev` in the activation block should still be updated to the
 new matching version so future activation lands on the right pin.
 
-## Planned upgrade: Lean v4.29.0
-
-The substrate is currently pinned to Lean v4.28.0 to match Loren's global
-toolchain. An upgrade to Lean v4.29.0 is planned in the near future. At
-that time:
-
-- `lean-toolchain` becomes `leanprover/lean4:v4.29.0`.
-- The commented Mathlib `rev` in `lakefile.toml` becomes `v4.29.0`.
-- This document's "Current status" and the table above are updated to
-  reflect the new pin.
-- If Mathlib has been activated by then, the upgrade is the coordinated
-  bump described above. If not, only the toolchain and the commented
-  rev change.
-
 ## Why this discipline
 
 The substrate is positioned as the long-lived shared formal vocabulary
